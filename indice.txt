@@ -1,0 +1,2 @@
+C4 Patron cadena de responsabilidad
+C5 Patron proxy
