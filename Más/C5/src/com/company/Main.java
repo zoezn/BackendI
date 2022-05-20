@@ -4,16 +4,23 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        Documento documento1= new Documento(1,"asd.com", "akhdsjahsdjkasd");
-        Usuario usuario1 = new Usuario("asd@gmail.com", "asd.com");
+        Usuario usuario1= new Usuario("asd@gmail.com");
+        usuario1.setUrl("asd.com");
 
-        documento1.agregarUsuariosAutorizados(usuario1);
+        Usuario usuario2= new Usuario("123@gmail.com");
+        usuario2.setUrl("asd.com");
+        
+        Documento documento1 = new Documento("1", "asd.com", "blaaa bla bla bla ijijijij");
+        documento1.agregarUsuariosAutorizados("asd@gmail.com");
+        documento1.agregarUsuariosAutorizados("123@gmail.com");
 
-        documento1.conectarConDocumento(usuario1);
+        ProxyDocumento proxy = new ProxyDocumento(usuario1);
+        ProxyDocumento proxy2 = new ProxyDocumento(usuario2);
 
-        Usuario usuario2= new Usuario("jaja@gmail.com", ":)");
+        proxy.leerDocumento(documento1);
+        proxy2.leerDocumento(documento1);
 
-        System.out.println(documento1.getListaHistorialAccesos());
+        System.out.println(documento1.getHistorialAccesos());
 
     }
 }

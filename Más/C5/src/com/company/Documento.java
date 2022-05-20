@@ -3,49 +3,43 @@ package com.company;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Documento implements IVerDocumentos{
-    private Integer id;
+public class Documento{
+
+
+    private String id;
     private String url;
     private String contenido;
-    private List<Usuario> listaUsuariosAutorizados;
-    private List<Usuario> listaHistorialAccesos;
+    private List<String> usuariosAutorizados;
+    private List<String> historialAccesos;
 
-
-    public Documento(Integer id, String url, String contenido) {
+    public Documento(String id, String url, String contenido) {
         this.id = id;
         this.url = url;
         this.contenido = contenido;
-        listaHistorialAccesos = new ArrayList<>();
-        listaUsuariosAutorizados = new ArrayList<>();
+        usuariosAutorizados = new ArrayList<>();
+        historialAccesos = new ArrayList<>();
     }
 
-    public void agregarUsuariosAutorizados(Usuario usuario){
-        listaUsuariosAutorizados.add(usuario);
+    public void agregarUsuariosAutorizados(String mail){
+        usuariosAutorizados.add(mail);
+    }
+    public void agregarHistorialAccesos(String mail){
+        historialAccesos.add(mail);
     }
 
-    public void agregarHistorial(Usuario usuario){
-        listaHistorialAccesos.add(usuario);
+    public String getUrl() {
+        return url;
     }
 
-    @Override
-    public void conectarConDocumento(Usuario usuario) {
-        if (listaUsuariosAutorizados.contains(usuario) && this.url.equals(usuario.getUrl())){
-            System.out.println("El contenido del documento es: " + contenido);
-            listaHistorialAccesos.add(usuario);
-        } else{
-            System.out.println("Acceso denegado");
-    }}
-
-    public List<Usuario> getListaHistorialAccesos() {
-        return listaHistorialAccesos;
+    public String getContenido() {
+        return contenido;
     }
 
+    public List<String> getUsuariosAutorizados() {
+        return usuariosAutorizados;
+    }
 
-
-
-/*   Pensemos en una aplicación al estilo Google Drive, un servicio que nos trae documentos.
-                Para acceder al mismo, debemos enviarle una url y un email. Los documentos están
-        compuestos por una id, una url, un contenido y una lista de usuarios autorizados a verlo.
-                Queremos registrar quiénes acceden a los documentos. ¿Cómo resolverías este problema
-        aplicando el patrón proxy?*/
+    public List<String> getHistorialAccesos() {
+        return historialAccesos;
+    }
 }
