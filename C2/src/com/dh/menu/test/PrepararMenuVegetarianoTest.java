@@ -35,7 +35,6 @@ public class PrepararMenuVegetarianoTest {
         assertEquals(170.0, prepararMenuVegetariano.calcularPrecio(menu3));
     }
 
-
     @Test
     void prepararMenu(){
         assertEquals(169.4, prepararMenuVegetariano.calcularPrecio(menu));

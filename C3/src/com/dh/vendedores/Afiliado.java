@@ -7,15 +7,4 @@ public class Afiliado extends Vendedor{
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
 }

@@ -4,9 +4,9 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
- /*       Enunciado
+ /*     Enunciado
         Se desea apoyar el proceso de armado de menús para llevar en un negocio de comidas rápidas.
-                Se ofrecen tres tipos de menús: clásico, infantil y vegetariano.
+        Se ofrecen tres tipos de menús: clásico, infantil y vegetariano.
         Los menús tienen un precio base al cual se le suman los recargos de acuerdo a lo siguiente:
         Menú infantil: 3 pesos adicionales por cada juguete incluido.
         Menú vegetariano: 1% adicional por especias y 2 pesos por cada salsa vegetariana.

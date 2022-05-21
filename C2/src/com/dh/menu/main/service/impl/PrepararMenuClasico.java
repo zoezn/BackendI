@@ -5,7 +5,6 @@ import com.dh.menu.main.service.PrepararMenu;
 
 public class PrepararMenuClasico extends PrepararMenu {
 
-
     @Override
     public double calcularPrecio(Menu menu) {
         return menu.getPrecioBase();

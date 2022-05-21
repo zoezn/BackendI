@@ -4,7 +4,6 @@ import com.dh.menu.main.model.Menu;
 
 public abstract class PrepararMenu {
 
-
     public double prepararMenu(Menu menu)
     {
         System.out.println(armar());
