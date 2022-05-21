@@ -6,7 +6,7 @@ public interface LeerDocumento {
     por una id, una url, un contenido y una lista de usuarios autorizados a verlo. Queremos registrar
     quiénes acceden a los documentos. ¿Cómo resolverías este problema aplicando el patrón proxy?*/
 
-    public abstract void leerDocumento(Documento documento);
+    public abstract void leerDocumento(Documento documento, Usuario usuario);
 
 
 

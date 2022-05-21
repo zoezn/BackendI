@@ -14,13 +14,12 @@ public class Main {
         documento1.agregarUsuariosAutorizados("asd@gmail.com");
         documento1.agregarUsuariosAutorizados("123@gmail.com");
 
-        ProxyDocumento proxy = new ProxyDocumento(usuario1);
-        ProxyDocumento proxy2 = new ProxyDocumento(usuario2);
+        ProxyDocumento proxy = new ProxyDocumento();
 
-        proxy.leerDocumento(documento1);
-        proxy2.leerDocumento(documento1);
+        proxy.leerDocumento(documento1,usuario1);
+        proxy.leerDocumento(documento1,usuario2);
+
 
         System.out.println(documento1.getHistorialAccesos());
-
     }
 }
