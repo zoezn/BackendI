@@ -24,3 +24,50 @@ public class TestLog {
        }
    }
 }
+
+
+
+Mas codigo
+
+Connection c = null;
+try {
+ Class.forName("org.h2.Driver");
+ } catch (ClassNotFoundException e) {
+ e.printStackTrace();
+ System.exit(0);
+ }
+
+
+try {
+ String url =
+"jdbc:h2:tcp://localhost//D:/base_de_datos/ejemplo";
+ c = DriverManager.getConnection(url, "sa", "sa");
+ c.setAutoCommit(false);
+ } catch (SQLException e) {
+ e.printStackTrace();
+ System.exit(0);
+ }
+
+
+try {
+ Statement s = c.createStatement();
+ s.execute("AQUÍ_SENTENCIA_SQL");
+ } catch (Exception e) {
+ e.printStackTrace();
+ } finally {
+ try {
+ c.close();
+ } catch(SQLException e) {
+ e.printStackTrace();
+ }
+ }
+
+
+
+
+
+
+
+
+
+
