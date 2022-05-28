@@ -13,14 +13,18 @@ public class ApiHotel {
     }
 
     public void buscarHoteles(LocalDate fechaEntrada, LocalDate fechaSalida, String ciudad){
+        boolean variable = false;
         for (Hotel hotelLista : apiHoteles) {
             if (hotelLista.getCiudad().equals(ciudad) && hotelLista.getFechaSalida().equals(fechaSalida) && hotelLista.getFechaEntrada().equals(fechaEntrada)){
                 System.out.println(hotelLista);
                 System.out.println("__________________");
-            } else {
-                System.out.println("No hay hoteles disponibles");
-                System.out.println("__________________");
+                variable = true;
             }
+
+        }
+        if (!variable){
+            System.out.println("No hay hoteles disponibles");
+            System.out.println("__________________");
         }
 
     }

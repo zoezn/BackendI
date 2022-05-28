@@ -1,0 +1,22 @@
+INFO    2022-05-27 14:21:46,600 [main] logging.Tigre  - El tigre Juan esta corriendo.
+INFO    2022-05-27 14:21:46,601 [main] logging.Tigre  - El tigre Pedro esta corriendo.
+INFO    2022-05-27 14:21:46,601 [main] logging.Tigre  - El tigre Maria esta corriendo.
+INFO    2022-05-27 14:21:46,602 [main] logging.Leon  - El leon Omar esta corriendo.
+INFO    2022-05-27 14:21:46,602 [main] logging.Leon  - El leon Cristian esta corriendo.
+INFO    2022-05-27 14:21:46,602 [main] logging.Leon  - El leon Anibal esta corriendo.
+INFO    2022-05-27 14:21:46,602 [main] logging.Leon  - El leon Julian esta corriendo.
+INFO    2022-05-27 14:21:46,603 [main] logging.Tigre  - El tigre Juan NO es mayor a 10.
+INFO    2022-05-27 14:21:46,603 [main] logging.Tigre  - El tigre Pedro es mayor a 10.
+INFO    2022-05-27 14:21:46,603 [main] logging.Tigre  - La edad del tigre Maria es incorrecta.
+ERROR   2022-05-27 14:21:46,603 [main] logging.Test  - Hubo un error con los tigres
+java.lang.Exception
+	at logging.Tigre.esMayorA10(Tigre.java:25)
+	at logging.Test.main(Test.java:35)
+INFO    2022-05-27 14:21:46,605 [main] logging.Leon  - El leon Omar NO es mayor a 10.
+INFO    2022-05-27 14:21:46,606 [main] logging.Leon  - El leon Cristian es mayor a 10 y es alfa.
+INFO    2022-05-27 14:21:46,606 [main] logging.Leon  - El leon Anibal es mayor a 10.
+INFO    2022-05-27 14:21:46,606 [main] logging.Leon  - La edad del leon Julian es incorrecta.
+ERROR   2022-05-27 14:21:46,606 [main] logging.Test  - Hubo un error con los leones
+java.lang.Exception
+	at logging.Leon.esMayorA10(Leon.java:26)
+	at logging.Test.main(Test.java:44)

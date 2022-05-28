@@ -14,14 +14,17 @@ public class ApiVuelo {
 
 
     public void buscarVuelos(LocalDate fechaEntrada, LocalDate fechaSalida, String ciudad){
+        boolean variable = false;
         for (Vuelo vueloLista : apiVuelos) {
             if (vueloLista.getDestino().equals(ciudad) && vueloLista.getFechaSalida().equals(fechaEntrada) && vueloLista.getFechaRegreso().equals(fechaSalida)){
                 System.out.println(vueloLista);
                 System.out.println("__________________");
-            } else {
-                System.out.println("No hay vuelos disponibles");
-                System.out.println("__________________");
+                variable = true;
             }
+        }
+        if (!variable){
+            System.out.println("No hay vuelos disponibles");
+            System.out.println("__________________");
         }
 
 

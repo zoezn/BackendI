@@ -1,0 +1,23 @@
+ERROR   2022-05-27 18:55:15,332 [main] Test  - Hubo un error: 
+org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.EMPLEADOS(ID) ( /* key:1 */ 1, 'Zoe', NULL, NULL, NULL)"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.EMPLEADOS(ID) ( /* key:1 */ 1, 'Zoe', NULL, NULL, NULL)"; SQL statement:
+INSERT INTO EMPLEADOS (id, nombre) VALUES (1, 'Santi') [23505-212]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:508)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.mvstore.db.MVPrimaryIndex.add(MVPrimaryIndex.java:120)
+	at org.h2.mvstore.db.MVTable.addRow(MVTable.java:519)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:174)
+	at org.h2.command.dml.Insert.update(Insert.java:135)
+	at org.h2.command.dml.DataChangeStatement.update(DataChangeStatement.java:74)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:174)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at Test.main(Test.java:57)
+DEBUG   2022-05-27 18:55:15,406 [main] Test  - rs5: org.h2.result.LocalResult@6c80d78a columns: 5 rows: 1 pos: -1
+INFO    2022-05-27 18:55:15,424 [main] Test  - Empleado eliminado
+INFO    2022-05-27 18:55:15,424 [main] Test  - rs6: org.h2.result.LocalResult@3ce1e309 columns: 5 rows: 1 pos: -1
+INFO    2022-05-27 18:55:15,444 [main] Test  - Empleado eliminado
+INFO    2022-05-27 18:55:15,444 [main] Test  - rs8: org.h2.result.LocalResult@3bb9a3ff columns: 5 rows: 1 pos: -1
