@@ -11,4 +11,10 @@
     <li>C10 Logging</li>
     <li>C11 Acceso a DB</li>
     <li>C12 Integrador IV</li>
+    <li>C13 Consultas a DB</li>
+    <li>C14 Patron DAO</li>
+    <li>C15 Integrador V</li>
+    <li>C16 Taller y repaso</li>
+    <li>C17 Primer parcial</li>
+    <li>C18 Maven</li>
   </ul>
