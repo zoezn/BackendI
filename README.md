@@ -18,4 +18,8 @@
     <li>C17 Primer parcial</li>
     <li>C18 Maven</li>
     <li>C19 Serializar</li>
+    <li>C20 Integrador VI</li>
+    <li>C21 Spring Boot</li>
+    <li>C22 Patron MVC</li>
+    <li>C23 Integrador VII</li>
   </ul>
