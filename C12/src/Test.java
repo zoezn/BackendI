@@ -12,7 +12,7 @@ public class Test {
 
     public static Connection getConnection() throws Exception {
         Class.forName("org.h2.Driver").newInstance();
-        return DriverManager.getConnection("jdbc:h2:~/C12", "sa", "");
+        return DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
     }
 
     private static final String SQL_CREATE_TABLE = "DROP TABLE IF EXISTS EMPLEADOS; CREATE TABLE EMPLEADOS "

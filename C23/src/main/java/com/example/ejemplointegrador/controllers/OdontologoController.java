@@ -40,7 +40,6 @@ public class OdontologoController {
         model.addAttribute("matricula", o.getMatricula());
         model.addAttribute("id", o.getId());
 
-
         return "id";
     }
 }

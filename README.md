@@ -22,4 +22,6 @@
     <li>C21 Spring Boot</li>
     <li>C22 Patron MVC</li>
     <li>C23 Integrador VII</li>
+    <li>C24 Taller de coding</li>
+    <li>C25 API</li>
   </ul>
