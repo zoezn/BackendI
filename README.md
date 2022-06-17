@@ -1,5 +1,5 @@
 
-<h2><img src="./Más/img/58f23613081d28c09dd15edd335addbe2.gif">BackendI<img src="./Más/img/58f23613081d28c09dd15edd335addbe2.gif"></h2>
+<h2><img src="./Más/img/58f23613081d28c09dd15edd335addbe2izquierda.gif">BackendI<img src="./Más/img/58f23613081d28c09dd15edd335addbe2derecha.gif"></h2>
 <ul>
     <li>C1 Test</li>
     <li>C2 Patron template</li>
