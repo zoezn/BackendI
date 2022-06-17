@@ -1,6 +1,4 @@
-<link href="style.css" rel="stylesheet"/>
-
-<ul ba>
+<ul>
     <li>C1 Test</li>
     <li>C2 Patron template</li>
     <li>C3 Integrador I</li>
@@ -29,6 +27,6 @@
     <li>C26 Integradora</li>
     <li>C27 API Rest II</li>
     <li>C28 Consumir APIs</li>
-    <li>C29 Integradora</li>
+    <li>C29 Integradora<img src="https://i.pinimg.com/originals/8b/30/71/8b3071feeff83f1e4a63ed231562ff0c.gif" width=20px></li>
     <li>C30 Inyección de dependencias</li>
   </ul>
