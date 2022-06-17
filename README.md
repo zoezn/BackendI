@@ -1,4 +1,9 @@
-<ul>
+ul {
+    background-image: "https://i.pinimg.com/originals/8b/30/71/8b3071feeff83f1e4a63ed231562ff0c.gif";
+}
+
+
+<ul ba>
     <li>C1 Test</li>
     <li>C2 Patron template</li>
     <li>C3 Integrador I</li>
@@ -30,4 +35,3 @@
     <li>C29 Integradora</li>
     <li>C30 Inyección de dependencias</li>
   </ul>
-  <img src="https://media1.giphy.com/media/xT9IgzvnOyNDYnxeHS/giphy.gif">
