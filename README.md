@@ -1,6 +1,5 @@
-<img src="https://i.pinimg.com/originals/8b/30/71/8b3071feeff83f1e4a63ed231562ff0c.gif" height="20px">
-<h2><img src="https://i.pinimg.com/originals/8b/30/71/8b3071feeff83f1e4a63ed231562ff0c.gif" >BackendI<img src="https://i.pinimg.com/originals/8b/30/71/8b3071feeff83f1e4a63ed231562ff0c.gif"></h2>
-<img src="https://i.pinimg.com/originals/8b/30/71/8b3071feeff83f1e4a63ed231562ff0c.gif">
+
+<h2><img src="https://i.pinimg.com/originals/56/e1/ba/56e1ba01b9b32f727eade1bf2b52bdf5.gif" >BackendI<img src="https://i.pinimg.com/originals/56/e1/ba/56e1ba01b9b32f727eade1bf2b52bdf5.gif"></h2>
 <ul>
     <li>C1 Test</li>
     <li>C2 Patron template</li>
