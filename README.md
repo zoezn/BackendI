@@ -1,7 +1,4 @@
-ul {
-    background-image: "https://i.pinimg.com/originals/8b/30/71/8b3071feeff83f1e4a63ed231562ff0c.gif";
-}
-
+<link href="style.css" rel="stylesheet"/>
 
 <ul ba>
     <li>C1 Test</li>
