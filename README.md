@@ -1,4 +1,4 @@
-<ul style="background-image: url ("https://i.pinimg.com/originals/8b/30/71/8b3071feeff83f1e4a63ed231562ff0c.gif");">
+<ul style="background-image: url('https://i.pinimg.com/originals/8b/30/71/8b3071feeff83f1e4a63ed231562ff0c.gif');">
     <li>C1 Test</li>
     <li>C2 Patron template</li>
     <li>C3 Integrador I</li>
