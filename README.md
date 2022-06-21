@@ -26,10 +26,11 @@
     <li>C23 Integrador VII</li>
     <li>C24 Taller de coding</li>
     <li>C25 API Rest</li>
-    <li>C26 Integradora</li>
+    <li>C26 Integradora VIII</li>
     <li>C27 API Rest II</li>
     <li>C28 Consumir APIs</li>
     <li>C29 Integradora</li>
     <li>C30 Inyección de dependencias</li>
-    <li>C30 ORM</li>
+    <li>C31 ORM</li>
+    <li>C32 Integradora IX</li>
   </ul>
