@@ -31,4 +31,5 @@
     <li>C28 Consumir APIs</li>
     <li>C29 Integradora</li>
     <li>C30 Inyección de dependencias</li>
+    <li>C30 ORM</li>
   </ul>
