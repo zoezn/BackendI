@@ -29,8 +29,8 @@
     <li>C26 Integradora VIII</li>
     <li>C27 API Rest II</li>
     <li>C28 Consumir APIs</li>
-    <li>C29 Integradora</li>
+    <li>C29 Integradora IX</li>
     <li>C30 Inyección de dependencias</li>
     <li>C31 ORM</li>
-    <li>C32 Integradora IX</li>
+    <li>C32 Integradora X</li>
   </ul>
