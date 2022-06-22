@@ -1,10 +1,10 @@
 package com.dh.clinica;
 
 
-import com.dh.clinica.repository.impl.DomicilioDaoH2;
-import com.dh.clinica.repository.impl.PacienteDaoH2;
-import com.dh.clinica.model.Domicilio;
-import com.dh.clinica.model.Paciente;
+import com.dh.clinica.persistence.repository.impl.DomicilioDaoH2;
+import com.dh.clinica.persistence.repository.impl.PacienteDaoH2;
+import com.dh.clinica.persistence.model.Domicilio;
+import com.dh.clinica.persistence.model.Paciente;
 import com.dh.clinica.service.DomicilioService;
 import com.dh.clinica.service.PacienteService;
 

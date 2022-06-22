@@ -1,13 +1,12 @@
 package com.dh.clinica.service;
 
 
-import com.dh.clinica.repository.IDao;
-import com.dh.clinica.model.Paciente;
+import com.dh.clinica.persistence.repository.IDao;
+import com.dh.clinica.persistence.model.Paciente;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PacienteService {

@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ejercicio-docente-orm" />
         <module name="mascotas" />
         <module name="ejercicio-docente" />
       </profile>
@@ -14,6 +15,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ejercicio-docente" options="-parameters" />
+      <module name="ejercicio-docente-orm" options="-parameters" />
       <module name="mascotas" options="-parameters" />
     </option>
   </component>

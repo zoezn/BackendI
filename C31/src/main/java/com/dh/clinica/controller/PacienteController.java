@@ -1,8 +1,7 @@
 package com.dh.clinica.controller;
 
-import com.dh.clinica.repository.impl.DomicilioDaoH2;
-import com.dh.clinica.repository.impl.PacienteDaoH2;
-import com.dh.clinica.model.Paciente;
+import com.dh.clinica.persistence.repository.impl.PacienteDaoH2;
+import com.dh.clinica.persistence.model.Paciente;
 import com.dh.clinica.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
