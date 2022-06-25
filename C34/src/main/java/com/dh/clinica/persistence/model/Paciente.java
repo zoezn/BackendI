@@ -2,6 +2,8 @@ package com.dh.clinica.persistence.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "pacientes2")
@@ -17,8 +19,11 @@ public class Paciente {
     private String dni;
     @Column
     private Date fechaIngreso;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "domicilio_id")
     private Domicilio domicilio;
+    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
+    private Set<Turno> turnos = new HashSet<>();
 
     public Paciente() {
     }
