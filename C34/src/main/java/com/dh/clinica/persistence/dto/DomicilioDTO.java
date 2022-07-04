@@ -1,38 +1,25 @@
-package com.dh.clinica.persistence.model;
+package com.dh.clinica.persistence.dto;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "domicilios")
-public class Domicilio {
-    @Id
-    @SequenceGenerator(name = "domicilio_sequence", sequenceName = "domicilio_sequence", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "domicilio_sequence")
+
+public class DomicilioDTO {
+
     private Integer id;
-    @Column
     private String calle;
-    @Column
     private String numero;
-    @Column
     private String localidad;
-    @Column
     private String provincia;
 
-    public Domicilio() {
-    }
-
-    public Domicilio(Integer id, String calle, String numero, String localidad, String provincia) {
+    public DomicilioDTO(Integer id, String calle, String numero, String localidad, String provincia) {
         this.id = id;
         this.calle = calle;
         this.numero = numero;
         this.localidad = localidad;
         this.provincia = provincia;
     }
-    public Domicilio( String calle, String numero, String localidad, String provincia) {
-        this.calle = calle;
-        this.numero = numero;
-        this.localidad = localidad;
-        this.provincia = provincia;
+
+    public DomicilioDTO() {
     }
 
     public Integer getId() {
@@ -73,16 +60,5 @@ public class Domicilio {
 
     public void setProvincia(String provincia) {
         this.provincia = provincia;
-    }
-
-    @Override
-    public String toString() {
-        return "Domicilio{" +
-                "id=" + id +
-                ", calle='" + calle + '\'' +
-                ", numero='" + numero + '\'' +
-                ", localidad='" + localidad + '\'' +
-                ", provincia='" + provincia + '\'' +
-                '}';
     }
 }

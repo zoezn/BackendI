@@ -1,42 +1,103 @@
 package com.dh.clinica.service;
 
 
+import com.dh.clinica.persistence.dto.DomicilioDTO;
+import com.dh.clinica.persistence.dto.OdontologoDTO;
+import com.dh.clinica.persistence.dto.PacienteDTO;
+import com.dh.clinica.persistence.model.Domicilio;
+import com.dh.clinica.persistence.model.Odontologo;
 import com.dh.clinica.persistence.model.Paciente;
-import com.dh.clinica.persistence.repository.PacienteRepository;
+import com.dh.clinica.persistence.repository.IOdontologoRepository;
+import com.dh.clinica.persistence.repository.IPacienteRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
-public class PacienteService {
-
-    private final PacienteRepository pacienteRepository;
+public class PacienteService implements IPacienteService{
+    @Autowired
+    private IPacienteRepository pacienteRepository;
 
     @Autowired
-    public PacienteService(PacienteRepository pacienteRepository) {
-        this.pacienteRepository = pacienteRepository;
+    private DomicilioService domicilioService;
+
+    @Autowired
+    ObjectMapper mapper;
+
+    @Override
+    public PacienteDTO crearPaciente(PacienteDTO pacienteDTO) {
+        Paciente p = mapper.convertValue(pacienteDTO, Paciente.class);
+        Paciente nuevoP = pacienteRepository.save(p);
+
+        return mapper.convertValue(nuevoP, PacienteDTO.class);
     }
 
-    public Paciente guardar(Paciente p) {
-        return pacienteRepository.save(p);
+    @Override
+    public PacienteDTO buscarPorId(Integer id) {
+        Optional<Paciente> p = pacienteRepository.findById(id);
+        PacienteDTO pDTO = null;
+        if (p.isPresent()){
+            pDTO = mapper.convertValue(p, PacienteDTO.class);
+        }
+        return pDTO;
     }
 
-    public Optional<Paciente> buscar(Integer id) {
-        return pacienteRepository.findById(id);
+    @Override
+    public PacienteDTO modificarPaciente(PacienteDTO pacienteDTO) {
+        PacienteDTO p = buscarPorId(pacienteDTO.getId());
+        DomicilioDTO d = null;
+
+        if (pacienteDTO.getApellido() != null) {
+            p.setApellido(pacienteDTO.getApellido());
+        }
+        if (pacienteDTO.getNombre() != null) {
+            p.setNombre(pacienteDTO.getNombre());
+        }
+        if (pacienteDTO.getFechaIngreso() != null) {
+            p.setFechaIngreso(pacienteDTO.getFechaIngreso());
+        }
+        if (pacienteDTO.getDomicilio().getId() != null) {
+            d = domicilioService.buscarPorId(pacienteDTO.getDomicilio().getId());
+            Domicilio dNuevo = mapper.convertValue(d, Domicilio.class);
+            p.setDomicilio(dNuevo);
+        }
+        if (pacienteDTO.getDni() != null) {
+            p.setDni(pacienteDTO.getDni());
+        }
+
+
+        return crearPaciente(pacienteDTO);
     }
 
-    public List<Paciente> buscarTodos() {
-        return pacienteRepository.findAll();
+    @Override
+    public String eliminarPaciente(Integer id) {
+        if (pacienteRepository.findById(id).isPresent()){
+            pacienteRepository.deleteById(id);
+            return "El paciente con id " + id + " ha sido eliminado.";
+        }
+        return "El paciente con id " + id + " no fue encontrado.";
+
     }
 
-    public void eliminar(Integer id) {
-        pacienteRepository.deleteById(id);
+    @Override
+    public Set<PacienteDTO> buscarTodos() {
+        List<Paciente> pacienteList = pacienteRepository.findAll();
+
+        Set<PacienteDTO> pacienteDTOList = new HashSet<PacienteDTO>();
+
+        PacienteDTO pDTO = null;
+
+        for (Paciente p: pacienteList){
+            pDTO = mapper.convertValue(p, PacienteDTO.class);
+            pacienteDTOList.add(pDTO);
+        }
+
+        return pacienteDTOList;
     }
 
-    public Paciente actualizar(Paciente p) {
-        return pacienteRepository.save(p);
-    }
 }

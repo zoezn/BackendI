@@ -1,14 +1,17 @@
 package com.dh.clinica.persistence.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "odontologos2")
+@Table(name = "odontologos")
 public class Odontologo {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "odontologo_sequence", sequenceName = "odontologo_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "odontologo_sequence")
     private Integer id;
     @Column
     private String nombre;
@@ -16,7 +19,8 @@ public class Odontologo {
     private String apellido;
     @Column
     private Integer matricula;
-    @OneToMany(mappedBy = "odontologo", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "odontologo", fetch = FetchType.EAGER)
+    @JsonIgnore
     private Set<Turno> turnos = new HashSet<>();
 
     public Odontologo() {
@@ -65,6 +69,14 @@ public class Odontologo {
 
     public void setMatricula(Integer matricula) {
         this.matricula = matricula;
+    }
+
+    public Set<Turno> getTurnos() {
+        return turnos;
+    }
+
+    public void setTurnos(Set<Turno> turnos) {
+        this.turnos = turnos;
     }
 
     @Override
