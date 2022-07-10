@@ -18,11 +18,18 @@ public class Turno {
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "odontologo_id", nullable = false)
     private Odontologo odontologo;
-
+    @Column
     private Date fecha;
 
 
     public Turno() {
+    }
+
+    public Turno(Integer id, Paciente paciente, Odontologo odontologo, Date fecha) {
+        this.id = id;
+        this.paciente = paciente;
+        this.odontologo = odontologo;
+        this.fecha = fecha;
     }
 
     public Integer getId() {

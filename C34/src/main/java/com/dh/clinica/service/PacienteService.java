@@ -1,6 +1,7 @@
 package com.dh.clinica.service;
 
 
+import com.dh.clinica.excepciones.ResourceNotFoundException;
 import com.dh.clinica.persistence.dto.DomicilioDTO;
 import com.dh.clinica.persistence.dto.OdontologoDTO;
 import com.dh.clinica.persistence.dto.PacienteDTO;
@@ -48,7 +49,7 @@ public class PacienteService implements IPacienteService{
     }
 
     @Override
-    public PacienteDTO modificarPaciente(PacienteDTO pacienteDTO) {
+    public PacienteDTO modificarPaciente(PacienteDTO pacienteDTO) throws ResourceNotFoundException {
         PacienteDTO p = buscarPorId(pacienteDTO.getId());
         DomicilioDTO d = null;
 

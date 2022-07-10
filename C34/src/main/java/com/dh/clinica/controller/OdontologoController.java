@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Set;
+import org.apache.log4j.Logger;
 
 
 @RestController
@@ -19,14 +20,18 @@ public class OdontologoController {
     @Autowired
     private OdontologoService odontologoService;
 
+    private static final Logger logger = Logger.getLogger(Logger.class);
+
+
     @PostMapping("/new")
     public ResponseEntity<OdontologoDTO> registrarOdontologo(@RequestBody OdontologoDTO odontologo) {
+        logger.info("Creando un nuevo odontologo.");
         return ResponseEntity.ok(odontologoService.crearOdontologo(odontologo));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<OdontologoDTO> buscar(@PathVariable Integer id) {
-
+        logger.info("Buscando odontologo con ID: " + id + ".");
         return ResponseEntity.ok(odontologoService.buscarPorId(id));
     }
 
@@ -35,8 +40,10 @@ public class OdontologoController {
         ResponseEntity<OdontologoDTO> response = null;
 
         if (odontologo.getId() != null && odontologoService.buscarPorId(odontologo.getId()) != null) {
+            logger.info("Modificando odontologo con ID: " + odontologo.getId() + ".");
             response = ResponseEntity.ok(odontologoService.modificarOdontologo(odontologo));
         }else {
+            logger.warn("No se encontro el domicilio con ID: " + odontologo.getId() + ", no se puede actualizar.");
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
         return response;
@@ -47,9 +54,11 @@ public class OdontologoController {
         ResponseEntity<String> response = null;
 
         if (odontologoService.buscarPorId(id) != null) {
+            logger.info("Eliminando odontologo con ID: " + id + ".");
             odontologoService.eliminarOdontologo(id);
             response = ResponseEntity.status(HttpStatus.NO_CONTENT).body("Eliminado");
         } else {
+            logger.warn("No se encontro odontologo con ID: " + id + ", no se puede eliminar.");
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
 
@@ -57,6 +66,7 @@ public class OdontologoController {
     }
     @GetMapping
     public ResponseEntity<Set<OdontologoDTO>> buscarTodos(){
+        logger.info("Listando todos los odontologos.");
         return ResponseEntity.ok(odontologoService.buscarTodos());
     }
 
