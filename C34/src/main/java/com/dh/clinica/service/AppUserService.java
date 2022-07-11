@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AppUserService implements UserDetailsService {
 
+    @Autowired
     private final com.dh.clinica.persistence.repository.UserRepository userRepository;
 
     @Autowired

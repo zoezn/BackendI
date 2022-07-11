@@ -14,11 +14,7 @@ import com.dh.clinica.service.PacienteService;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
-import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.junit.runners.MethodSorters;
@@ -35,24 +31,10 @@ import java.util.List;
 @SpringBootTest
 @AutoConfigureMockMvc
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class PacienteServiceTests {
+ class PacienteServiceTests {
 
     @Autowired
     private PacienteService pacienteService;
-
-   /* @BeforeEach
-    public void cargarPrimerPaciente(){
-        PacienteDTO p = new PacienteDTO();
-        Domicilio d = new Domicilio("Rivadavia", 222, "Lanus", "Buenos Aires");
-        Date date = new Date(2002-2-11);
-        p.setNombre("Zoe");
-        p.setApellido("Jimenez");
-        p.setDomicilio(d);
-        p.setDni(2);
-        p.setFechaIngreso(date);
-        pacienteService.crearPaciente(p);
-        System.out.println(p.getId());
-    }*/
 
     @Test
     @Order(1)

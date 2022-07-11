@@ -6,8 +6,8 @@ import com.dh.clinica.persistence.model.Odontologo;
 import com.dh.clinica.service.OdontologoService;
 
 import org.junit.*;
-import org.junit.Test;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.junit.runners.MethodSorters;
@@ -20,35 +20,15 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 import java.util.Set;
 
-/*@FixMethodOrder(MethodSorters.NAME_ASCENDING)*/
-/*@RunWith(JUnit4.class)*/
-/*@SpringBootTest*/
-/*@RunWith(SpringRunner.class)*/
-/*@DataJpaTest
-@SpringBootTest(classes=ClinicaOdontologicaApplication.class)*/
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-@FixMethodOrder(MethodSorters.DEFAULT)
-public class OdontologoServiceTests {
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+class OdontologoServiceTests {
 
     @Autowired
     private OdontologoService odontologoService;
-
-    @BeforeEach
-    public void cargarPrimerOdontologo(){
-        OdontologoDTO o = new OdontologoDTO();
-        o.setNombre("Profe");
-        o.setApellido("Peter");
-        o.setMatricula(123);
-        o = odontologoService.crearOdontologo(o);
-
-        OdontologoDTO o2 = new OdontologoDTO();
-        o2.setNombre("Zoe");
-        o2.setApellido("Jimenez");
-        o2.setMatricula(222);
-        o2 = odontologoService.crearOdontologo(o2);
-    }
 
     @Test
     @Order(1)
