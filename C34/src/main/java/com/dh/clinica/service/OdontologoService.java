@@ -4,6 +4,7 @@ import com.dh.clinica.excepciones.ResourceNotFoundException;
 import com.dh.clinica.persistence.dto.OdontologoDTO;
 import com.dh.clinica.persistence.model.Odontologo;
 import com.dh.clinica.persistence.repository.IOdontologoRepository;
+import com.dh.clinica.service.impl.IOdontologoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @Service
-public class OdontologoService implements IOdontologoService{
+public class OdontologoService implements IOdontologoService {
 
     @Autowired
     private IOdontologoRepository odontologoRepository;
@@ -30,19 +31,24 @@ public class OdontologoService implements IOdontologoService{
     public OdontologoDTO crearOdontologo(OdontologoDTO odontologoDTO) {
         Odontologo o = mapper.convertValue(odontologoDTO, Odontologo.class);
         Odontologo nuevoO = odontologoRepository.save(o);
+        logger.info("Odontologo con ID: " + nuevoO.getId() + " guardado.");
         return mapper.convertValue(nuevoO, OdontologoDTO.class);
     }
 
     @Override
     public OdontologoDTO buscarPorId(Integer id) throws ResourceNotFoundException {
+        logger.info("Buscando el odontologo con ID: " + id + ".");
         Optional<Odontologo> o = odontologoRepository.findById(id);
         OdontologoDTO oDTO = null;
         if (o.isPresent()){
             oDTO = mapper.convertValue(o, OdontologoDTO.class);
+            logger.info("Odontologo con ID: " + id + " encontrado.");
+            return oDTO;
         } else {
+            logger.error("No se encontro odontologo con ID: " + id + ".");
             throw new ResourceNotFoundException("No se encontro odontologo con ID: " + id + ".");
         }
-        return oDTO;
+
     }
 
     @Override
@@ -78,6 +84,7 @@ public class OdontologoService implements IOdontologoService{
 
     @Override
     public Set<OdontologoDTO> buscarTodos() {
+        logger.info("Listando todos los odontologos.");
         List<Odontologo> odontologoList = odontologoRepository.findAll();
 
         Set<OdontologoDTO> odontologoDTOList = new HashSet<OdontologoDTO>();

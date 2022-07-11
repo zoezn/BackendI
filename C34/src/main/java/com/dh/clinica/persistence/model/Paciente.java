@@ -19,7 +19,7 @@ public class Paciente {
     @Column
     private String apellido;
     @Column
-    private String dni;
+    private Integer dni;
     @Column
     private Date fechaIngreso;
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -32,7 +32,7 @@ public class Paciente {
     public Paciente() {
     }
 
-    public Paciente(Integer id, String nombre, String apellido, String dni, Date fechaIngreso, Domicilio domicilio) {
+    public Paciente(Integer id, String nombre, String apellido, Integer dni, Date fechaIngreso, Domicilio domicilio) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -41,7 +41,7 @@ public class Paciente {
         this.domicilio = domicilio;
     }
 
-    public Paciente(String nombre, String apellido, String dni, Date fechaIngreso, Domicilio domicilio) {
+    public Paciente(String nombre, String apellido, Integer dni, Date fechaIngreso, Domicilio domicilio) {
 
         this.nombre = nombre;
         this.apellido = apellido;
@@ -75,11 +75,11 @@ public class Paciente {
         this.nombre = nombre;
     }
 
-    public String getDni() {
+    public Integer getDni() {
         return dni;
     }
 
-    public void setDni(String dni) {
+    public void setDni(Integer dni) {
         this.dni = dni;
     }
 

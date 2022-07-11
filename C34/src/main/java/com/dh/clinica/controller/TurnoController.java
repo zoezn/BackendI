@@ -1,6 +1,7 @@
 package com.dh.clinica.controller;
 
 import com.dh.clinica.excepciones.ResourceNotFoundException;
+import com.dh.clinica.persistence.dto.PacienteDTO;
 import com.dh.clinica.persistence.dto.TurnoDTO;
 import com.dh.clinica.persistence.model.Turno;
 import com.dh.clinica.service.OdontologoService;
@@ -51,8 +52,14 @@ public class TurnoController {
         return ResponseEntity.ok(turnoService.buscarTodos());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<TurnoDTO> buscar(@PathVariable Integer id) throws ResourceNotFoundException {
+        logger.info("Buscando turno con ID: " + id +".");
+        return ResponseEntity.ok(turnoService.buscarPorId(id));
+    }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminar(@PathVariable Integer id) {
+    public ResponseEntity<String> eliminar(@PathVariable Integer id) throws ResourceNotFoundException {
         ResponseEntity<String> response;
         if (turnoService.buscarPorId(id) != null) {
             logger.info("Eliminando turno con ID: " + id + ".");

@@ -56,8 +56,8 @@ public class PacienteController {
         ResponseEntity<String> response = null;
 
         if (pacienteService.buscarPorId(id) != null) {
-            pacienteService.eliminarPaciente(id);
             logger.info("Eliminando paciente con ID: " + id + ".");
+            pacienteService.eliminarPaciente(id);
             response = ResponseEntity.status(HttpStatus.NO_CONTENT).body("Eliminado");
         } else {
             logger.warn("No se encontro el paciente con ID: " + id + ", no se puede eliminar.");
@@ -67,7 +67,7 @@ public class PacienteController {
         return response;
     }
 
-    @GetMapping("/listar")
+    @GetMapping
     public ResponseEntity<Set<PacienteDTO>> buscarTodos(){
         logger.info("Listando todos los pacientes.");
         return ResponseEntity.ok(pacienteService.buscarTodos());

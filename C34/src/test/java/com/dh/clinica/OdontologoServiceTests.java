@@ -6,8 +6,8 @@ import com.dh.clinica.persistence.model.Odontologo;
 import com.dh.clinica.service.OdontologoService;
 
 import org.junit.*;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.Test;
+import org.junit.jupiter.api.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.junit.runners.MethodSorters;
@@ -29,66 +29,83 @@ import java.util.Set;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
+@FixMethodOrder(MethodSorters.DEFAULT)
 public class OdontologoServiceTests {
 
     @Autowired
     private OdontologoService odontologoService;
 
-    @BeforeAll
+    @BeforeEach
     public void cargarPrimerOdontologo(){
-        OdontologoDTO o = new OdontologoDTO();
-        o.setNombre("Zoe");
-        o.setApellido("Jimenez");
-        o.setMatricula(222);
-        o = odontologoService.crearOdontologo(o);
-    }
-
-    @Test
-    public void cargarOdontologo(){
         OdontologoDTO o = new OdontologoDTO();
         o.setNombre("Profe");
         o.setApellido("Peter");
         o.setMatricula(123);
         o = odontologoService.crearOdontologo(o);
 
-        Assert.assertTrue(o.getId() != null);
+        OdontologoDTO o2 = new OdontologoDTO();
+        o2.setNombre("Zoe");
+        o2.setApellido("Jimenez");
+        o2.setMatricula(222);
+        o2 = odontologoService.crearOdontologo(o2);
     }
 
     @Test
-    public void traerOdontologoID() throws ResourceNotFoundException {
+    @Order(1)
+    public void cargarOdontologos(){
         OdontologoDTO o = new OdontologoDTO();
-        o = odontologoService.buscarPorId(1);
+        o.setNombre("Profe");
+        o.setApellido("Peter");
+        o.setMatricula(123);
+        o = odontologoService.crearOdontologo(o);
 
+        OdontologoDTO o2 = new OdontologoDTO();
+        o2.setNombre("Zoe");
+        o2.setApellido("Jimenez");
+        o2.setMatricula(222);
+        o2 = odontologoService.crearOdontologo(o2);
+
+        OdontologoDTO o3 = new OdontologoDTO();
+        o3.setNombre("Porfavor");
+        o3.setApellido("Dios");
+        o3.setMatricula(222);
+        o3 = odontologoService.crearOdontologo(o3);
+
+        Assert.assertTrue(o.getId() != null && o2.getId() != null && o3.getId() != null);
+    }
+
+    @Test
+    @Order(2)
+    public void traerOdontologoPorID() throws ResourceNotFoundException {
+        OdontologoDTO o = null;
+        o = odontologoService.buscarPorId(1);
         Assert.assertTrue(o != null);
     }
-/*
-    private static OdontologoService odontologoService;
 
-    @BeforeAll
-    public static void cargarDataSet() {
-        OdontologoDTO o = new OdontologoDTO(1, "Santiago", "Paz", 3455647);
-        odontologoService.crearOdontologo(o);
+    @Test
+    @Order(3)
+    public void listarOdontologos() {
+
+        Assert.assertTrue(odontologoService.buscarTodos() != null);
     }
 
     @Test
-    public void guardarOdontologo() {
-        OdontologoDTO odontologo = odontologoService.crearOdontologo(new OdontologoDTO(2, "Juan", "Ramirez", 348971960));
-        Assert.assertTrue(odontologo.getId() != null);
+    @Order(4)
+    public void modificarOdontologo() throws ResourceNotFoundException {
+        OdontologoDTO o = new OdontologoDTO();
+        o.setId(2);
+        o.setMatricula(999);
+        OdontologoDTO oModificado = odontologoService.modificarOdontologo(o);
+        Assert.assertTrue(oModificado.getId().equals(2) && oModificado.getMatricula().equals(999));
     }
 
-    @Test
-    public void eliminarOdontologoTest() {
-        odontologoService.eliminarOdontologo(1);
-        Assert.assertTrue(odontologoService.buscarPorId(1) == null);
 
+    @Test
+    @Order(5)
+    public void eliminarOdontologoPorId() throws ResourceNotFoundException {
+
+        String e = odontologoService.eliminarOdontologo(3);
+        Assert.assertTrue(e.equals("El odontologo con id 3 ha sido eliminado."));
     }
-
-    @Test
-    public void traerTodos() {
-        Set<OdontologoDTO> odontologos = odontologoService.buscarTodos();
-        Assert.assertTrue(!odontologos.isEmpty());
-        Assert.assertTrue(odontologos.size() > 0);
-        System.out.println(odontologos);
-    }*/
 
 }

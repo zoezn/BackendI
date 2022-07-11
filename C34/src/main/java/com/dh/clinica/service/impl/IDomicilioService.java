@@ -1,4 +1,4 @@
-package com.dh.clinica.service;
+package com.dh.clinica.service.impl;
 
 import com.dh.clinica.excepciones.ResourceNotFoundException;
 import com.dh.clinica.persistence.dto.DomicilioDTO;
