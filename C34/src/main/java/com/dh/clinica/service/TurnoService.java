@@ -1,5 +1,6 @@
 package com.dh.clinica.service;
 
+import com.dh.clinica.excepciones.ResourceNotFoundException;
 import com.dh.clinica.persistence.dto.OdontologoDTO;
 import com.dh.clinica.persistence.dto.PacienteDTO;
 import com.dh.clinica.persistence.dto.TurnoDTO;
@@ -29,7 +30,7 @@ public class TurnoService implements ITurnoService{
 
 
     @Override
-    public TurnoDTO crearTurno(TurnoDTO turnoDTO) {
+    public TurnoDTO crearTurno(TurnoDTO turnoDTO) throws ResourceNotFoundException {
         Integer pID = turnoDTO.getPaciente().getId();
         Integer oID = turnoDTO.getOdontologo().getId();
 
@@ -61,7 +62,7 @@ public class TurnoService implements ITurnoService{
     }
 
     @Override
-    public TurnoDTO modificarTurno(TurnoDTO turnoDTO) {
+    public TurnoDTO modificarTurno(TurnoDTO turnoDTO) throws ResourceNotFoundException {
         return crearTurno(turnoDTO);
     }
 

@@ -1,5 +1,6 @@
 package com.dh.clinica.controller;
 
+import com.dh.clinica.excepciones.ResourceNotFoundException;
 import com.dh.clinica.persistence.dto.OdontologoDTO;
 import com.dh.clinica.persistence.model.Odontologo;
 
@@ -30,13 +31,13 @@ public class OdontologoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<OdontologoDTO> buscar(@PathVariable Integer id) {
+    public ResponseEntity<OdontologoDTO> buscar(@PathVariable Integer id) throws ResourceNotFoundException {
         logger.info("Buscando odontologo con ID: " + id + ".");
         return ResponseEntity.ok(odontologoService.buscarPorId(id));
     }
 
     @PutMapping()
-    public ResponseEntity<OdontologoDTO> actualizar(@RequestBody OdontologoDTO odontologo) {
+    public ResponseEntity<OdontologoDTO> actualizar(@RequestBody OdontologoDTO odontologo) throws ResourceNotFoundException {
         ResponseEntity<OdontologoDTO> response = null;
 
         if (odontologo.getId() != null && odontologoService.buscarPorId(odontologo.getId()) != null) {
@@ -50,7 +51,7 @@ public class OdontologoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminar(@PathVariable Integer id) {
+    public ResponseEntity<String> eliminar(@PathVariable Integer id) throws ResourceNotFoundException {
         ResponseEntity<String> response = null;
 
         if (odontologoService.buscarPorId(id) != null) {

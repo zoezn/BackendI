@@ -32,7 +32,7 @@ public class PacienteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PacienteDTO> buscar(@PathVariable Integer id) {
+    public ResponseEntity<PacienteDTO> buscar(@PathVariable Integer id) throws ResourceNotFoundException {
         logger.info("Buscando odontologo con ID: " + id +".");
         return ResponseEntity.ok(pacienteService.buscarPorId(id));
     }
@@ -52,7 +52,7 @@ public class PacienteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminar(@PathVariable Integer id) {
+    public ResponseEntity<String> eliminar(@PathVariable Integer id) throws ResourceNotFoundException {
         ResponseEntity<String> response = null;
 
         if (pacienteService.buscarPorId(id) != null) {

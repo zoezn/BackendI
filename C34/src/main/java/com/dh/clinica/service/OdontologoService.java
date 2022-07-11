@@ -1,9 +1,11 @@
 package com.dh.clinica.service;
 
+import com.dh.clinica.excepciones.ResourceNotFoundException;
 import com.dh.clinica.persistence.dto.OdontologoDTO;
 import com.dh.clinica.persistence.model.Odontologo;
 import com.dh.clinica.persistence.repository.IOdontologoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,8 @@ public class OdontologoService implements IOdontologoService{
     @Autowired
     ObjectMapper mapper;
 
+    private static final Logger logger = Logger.getLogger(Logger.class);
+
     @Override
     public OdontologoDTO crearOdontologo(OdontologoDTO odontologoDTO) {
         Odontologo o = mapper.convertValue(odontologoDTO, Odontologo.class);
@@ -30,25 +34,30 @@ public class OdontologoService implements IOdontologoService{
     }
 
     @Override
-    public OdontologoDTO buscarPorId(Integer id) {
+    public OdontologoDTO buscarPorId(Integer id) throws ResourceNotFoundException {
         Optional<Odontologo> o = odontologoRepository.findById(id);
         OdontologoDTO oDTO = null;
         if (o.isPresent()){
             oDTO = mapper.convertValue(o, OdontologoDTO.class);
+        } else {
+            throw new ResourceNotFoundException("No se encontro odontologo con ID: " + id + ".");
         }
         return oDTO;
     }
 
     @Override
-    public OdontologoDTO modificarOdontologo(OdontologoDTO odontologoDTO) {
+    public OdontologoDTO modificarOdontologo(OdontologoDTO odontologoDTO) throws ResourceNotFoundException {
         OdontologoDTO o = buscarPorId(odontologoDTO.getId());
         if (odontologoDTO.getNombre() != null){
+            logger.info("Modificando el nombre del odontologo con ID: " + odontologoDTO.getId() + ".");
             o.setNombre(odontologoDTO.getNombre());
         }
         if (odontologoDTO.getApellido() != null){
+            logger.info("Modificando el apellido del odontologo con ID: " + odontologoDTO.getId() + ".");
             o.setApellido(odontologoDTO.getApellido());
         }
         if (odontologoDTO.getMatricula() != null){
+            logger.info("Modificando la matricula del odontologo con ID: " + odontologoDTO.getId() + ".");
             o.setMatricula(odontologoDTO.getMatricula());
         }
 
@@ -56,12 +65,14 @@ public class OdontologoService implements IOdontologoService{
     }
 
     @Override
-    public String eliminarOdontologo(Integer id) {
-        if (odontologoRepository.findById(id).isPresent()){
+    public String eliminarOdontologo(Integer id) throws ResourceNotFoundException {
+        if (buscarPorId(id) != null){
             odontologoRepository.deleteById(id);
+            logger.info("El odontologo con id " + id + " ha sido eliminado.");
             return "El odontologo con id " + id + " ha sido eliminado.";
         }
-        return "El odontologo con id " + id + " no fue encontrado.";
+        logger.warn("El odontologo con id " + id + " no se pudo eliminar.");
+        return "El odontologo con id " + id + " no se pudo eliminar.";
 
     }
 

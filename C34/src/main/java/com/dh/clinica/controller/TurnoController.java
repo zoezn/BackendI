@@ -1,5 +1,6 @@
 package com.dh.clinica.controller;
 
+import com.dh.clinica.excepciones.ResourceNotFoundException;
 import com.dh.clinica.persistence.dto.TurnoDTO;
 import com.dh.clinica.persistence.model.Turno;
 import com.dh.clinica.service.OdontologoService;
@@ -28,7 +29,7 @@ public class TurnoController {
     private static final Logger logger = Logger.getLogger(Logger.class);
 
     @PostMapping("/new")
-    public ResponseEntity<TurnoDTO> registrarTurno(@RequestBody TurnoDTO turno) {
+    public ResponseEntity<TurnoDTO> registrarTurno(@RequestBody TurnoDTO turno) throws ResourceNotFoundException {
         ResponseEntity<TurnoDTO> response;
         if (pacienteService.buscarPorId(turno.getPaciente().getId()) != null && odontologoService.buscarPorId(turno.getOdontologo().getId()) != null){
             response = ResponseEntity.ok(turnoService.crearTurno(turno));
@@ -42,9 +43,6 @@ public class TurnoController {
 
 
     }
-
-/*    ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA TE QUEDASTE CON LOS LOGGERS*/
-    
 
 
     @GetMapping
@@ -68,7 +66,7 @@ public class TurnoController {
     }
 
     @PutMapping
-    public ResponseEntity<TurnoDTO> actualizarTurno(@RequestBody TurnoDTO turno) {
+    public ResponseEntity<TurnoDTO> actualizarTurno(@RequestBody TurnoDTO turno) throws ResourceNotFoundException {
         logger.info("Modificando turno con ID: " + turno.getId() + ".");
         return ResponseEntity.ok(turnoService.modificarTurno(turno));
 

@@ -8,7 +8,7 @@ import java.util.Set;
 public interface IPacienteService {
 
     PacienteDTO crearPaciente(PacienteDTO pacienteDTO);
-    PacienteDTO buscarPorId(Integer id);
+    PacienteDTO buscarPorId(Integer id) throws ResourceNotFoundException;
     PacienteDTO modificarPaciente(PacienteDTO pacienteDTO) throws ResourceNotFoundException;
     String eliminarPaciente(Integer id);
     Set<PacienteDTO> buscarTodos();
