@@ -33,4 +33,6 @@
     <li>C30 Inyección de dependencias</li>
     <li>C31 ORM</li>
     <li>C32 Integradora X</li>
+    <li>C32 Integradora X</li>
+    <li>C34 Proyecto Integrador</li>
   </ul>
